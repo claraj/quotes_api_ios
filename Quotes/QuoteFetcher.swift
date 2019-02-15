@@ -8,6 +8,14 @@
 
 import Foundation
 
+class QuoteError: Error {
+    let message: String
+    init(message: String) {
+        self.message = message
+    }
+}
+
+
 class QuoteFetcher {
     
     var quoteDelegate: QuoteDelegate?
@@ -39,15 +47,15 @@ class QuoteFetcher {
                     if let randomQuote = quote.first {
                         delegate.new(quote: randomQuote)
                     } else {
-                        print("error, no quotes returned")
+                        delegate.error(quoteError: QuoteError(message: "No quotes returned"))
                     }
                 } else {
-                    print("Error decoding quote response")
+                    delegate.error(quoteError: QuoteError(message: "Unable to decode response from quote server"))
                 }
             }
             
             if let error = error {
-                delegate.error(quoteError: error)
+                delegate.error(quoteError: QuoteError(message: error.localizedDescription))
             }
         })
         

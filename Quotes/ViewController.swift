@@ -52,8 +52,9 @@ class ViewController: UIViewController, QuoteDelegate {
     }
     
     
-    func error(quoteError: Error) {
-        let alert = UIAlertController(title: "Error", message: "Error fetching quote", preferredStyle: .alert)
+    func error(quoteError: QuoteError) {
+        let alert = UIAlertController(title: "Error", message: "Error fetching quote. \(quoteError.message)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alert, animated: true)
         newQuoteButton.isEnabled = true
     }

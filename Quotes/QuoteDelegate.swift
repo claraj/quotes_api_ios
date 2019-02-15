@@ -11,5 +11,5 @@ import Foundation
 protocol QuoteDelegate {
     
     func new(quote: Quote)
-    func error(quoteError: Error)
+    func error(quoteError: QuoteError)
 }
