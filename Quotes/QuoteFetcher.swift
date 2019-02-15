@@ -24,14 +24,11 @@ class QuoteFetcher {
         let urlString = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
         
         let url = URL(string: urlString)
-        //let session = URLSession.shared
         
         let config = URLSessionConfiguration.default
         config.urlCache = nil
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
-        //session.configuration = config
-       
         let session = URLSession(configuration: config)
         
         let task = session.dataTask(with: url!, completionHandler: {(data, response, error) in

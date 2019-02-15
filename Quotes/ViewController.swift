@@ -11,20 +11,12 @@ import WebKit
 
 class ViewController: UIViewController, QuoteDelegate {
     
-    @IBOutlet var webQuoteView: WKWebView!
     let quoteFetcher = QuoteFetcher()
-    
-    @IBAction func newQuoteButtonTapped(_ sender: Any) {
-        newQuoteButton.isEnabled = false
-        quoteFetcher.fetchRandomQuote()
-        
-    }
     
     @IBOutlet var newQuoteButton: UIButton!
     @IBOutlet var quoteTextView: UITextView!
-    //    @IBAction func newQuoteButton(_ sender: Any) {
-    //     }
-    
+ 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,6 +27,11 @@ class ViewController: UIViewController, QuoteDelegate {
         newQuoteButton.isEnabled = false
     }
     
+    @IBAction func newQuoteButtonTapped(_ sender: Any) {
+        newQuoteButton.isEnabled = false
+        quoteFetcher.fetchRandomQuote()
+        
+    }
     
     func new(quote: Quote) {
         DispatchQueue.main.async() {
@@ -42,15 +39,15 @@ class ViewController: UIViewController, QuoteDelegate {
             let quoteText = "\(quote.text)<p><em>\(quote.author)</em></p>"
             let data = Data(quoteText.utf8)
             
-            let attributedString = try? NSAttributedString(data: data,
-                                                           options:
-                [.documentType: NSAttributedString.DocumentType.html,
-                 .characterEncoding: String.Encoding.utf8.rawValue ],
-                                                           documentAttributes: nil)
+            let attributedString = try? NSAttributedString(
+                data: data,
+                options:
+                    [.documentType: NSAttributedString.DocumentType.html,
+                     .characterEncoding: String.Encoding.utf8.rawValue ],
+                documentAttributes: nil)
             
             self.quoteTextView.attributedText = attributedString
             self.newQuoteButton.isEnabled = true
-            
         }
     }
     
@@ -60,7 +57,6 @@ class ViewController: UIViewController, QuoteDelegate {
         present(alert, animated: true)
         newQuoteButton.isEnabled = true
     }
-    
     
 }
 

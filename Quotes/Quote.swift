@@ -9,9 +9,7 @@
 import Foundation
 
 struct Quote: Decodable {
-    
-//    let content: String
-//    let title: String
+
     let text: String
     let author: String
     let link: String
@@ -19,9 +17,6 @@ struct Quote: Decodable {
     enum CodingKeys: String, CodingKey {
         case text = "content"
         case author = "title"
-        
-//        case title: "author"
-//        case content: "text"
         case link
     }
 }
