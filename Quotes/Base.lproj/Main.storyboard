@@ -24,11 +24,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="289" id="V8p-xs-T3H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ot-wx-ffe">
-                                <rect key="frame" x="31" y="587" width="77" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ot-wx-ffe">
+                                <rect key="frame" x="31" y="585" width="200" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1YC-Yu-Sfd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="New Quote"/>
                                 <connections>
                                     <action selector="newQuoteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Urv-U2-fgT"/>
@@ -40,7 +44,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8ot-wx-ffe" secondAttribute="bottom" constant="50" id="PyK-Dy-ca8"/>
                             <constraint firstItem="8ot-wx-ffe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="RpV-lr-Wrd"/>
                             <constraint firstItem="iXv-Mx-az2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="Ta3-4e-Vtb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8ot-wx-ffe" secondAttribute="trailing" constant="267" id="cec-bB-OH0"/>
                             <constraint firstItem="iXv-Mx-az2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="fbq-Cn-a1m"/>
                             <constraint firstItem="iXv-Mx-az2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vDS-iZ-boP"/>
                         </constraints>

@@ -10,6 +10,7 @@ import Foundation
 
 struct Quote: Decodable {
 
+    let id: Int
     let text: String
     let author: String
     let link: String
@@ -18,6 +19,8 @@ struct Quote: Decodable {
     // Map the content key in the response to text property
     // Map the title key to the author property
     enum CodingKeys: String, CodingKey {
+        
+        case id = "ID"
         case text = "content"
         case author = "title"
         case link   // Even though link is not mapped, it must be included
