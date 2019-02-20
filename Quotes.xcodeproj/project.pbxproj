@@ -86,7 +86,6 @@
 				E79DD58C22174D300009DFB9 /* Quotes */,
 				E79DD5A122174D310009DFB9 /* QuotesTests */,
 				E79DD5AC22174D310009DFB9 /* QuotesUITests */,
-				E79DD58B22174D300009DFB9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +97,7 @@
 				E79DD5A922174D310009DFB9 /* QuotesUITests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E79DD58C22174D300009DFB9 /* Quotes */ = {
@@ -129,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E79DD5AD22174D310009DFB9 /* QuotesUITests.swift */,
+				E79DD58B22174D300009DFB9 /* Products */,
 				E79DD5AF22174D310009DFB9 /* Info.plist */,
 			);
 			path = QuotesUITests;

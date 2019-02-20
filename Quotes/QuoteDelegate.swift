@@ -8,8 +8,10 @@
 
 import Foundation
 
+// Functions that an object that wishes to receive
+// quotes (or errors) must implement
+
 protocol QuoteDelegate {
-    
     func new(quote: Quote)
     func error(quoteError: QuoteError)
 }

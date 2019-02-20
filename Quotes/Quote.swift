@@ -14,10 +14,13 @@ struct Quote: Decodable {
     let author: String
     let link: String
     
+    // The names for keys in the JSON response don't describe the data very well
+    // Map the content key in the response to text property
+    // Map the title key to the author property
     enum CodingKeys: String, CodingKey {
         case text = "content"
         case author = "title"
-        case link
+        case link   // Even though link is not mapped, it must be included
     }
 }
 

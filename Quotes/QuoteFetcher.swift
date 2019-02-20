@@ -20,26 +20,32 @@ class QuoteFetcher {
     
     var quoteDelegate: QuoteDelegate?
     
+    let urlString = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
+    
     func fetchRandomQuote() {
-        
-        print("fetching")
-        
+    
         guard let delegate = quoteDelegate else {
             print("Warning - no delegate set")
             return
         }
         
-        let urlString = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1"
-        
         let url = URL(string: urlString)
         
         let config = URLSessionConfiguration.default
+        
+        // All calls are made to the same URL, and iOS will cache the requests to save on
+        // network usage. Generally useful, except in this case, when we want to make the
+        // actual API call every time. So disable the cache.
         config.urlCache = nil
         config.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
         let session = URLSession(configuration: config)
         
         let task = session.dataTask(with: url!, completionHandler: {(data, response, error) in
+            
+            if let error = error {
+                delegate.error(quoteError: QuoteError(message: error.localizedDescription))
+            }
             
             if let quoteData = data {
                 let decoder = JSONDecoder()
@@ -53,14 +59,10 @@ class QuoteFetcher {
                     delegate.error(quoteError: QuoteError(message: "Unable to decode response from quote server"))
                 }
             }
-            
-            if let error = error {
-                delegate.error(quoteError: QuoteError(message: error.localizedDescription))
-            }
+        
         })
         
-        
-        task.resume()
+        task.resume()   // Don't forget this - no API call until resume() is called
     
         }
     }

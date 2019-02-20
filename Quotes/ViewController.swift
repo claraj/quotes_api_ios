@@ -16,11 +16,9 @@ class ViewController: UIViewController, QuoteDelegate {
     @IBOutlet var newQuoteButton: UIButton!
     @IBOutlet var quoteTextView: UITextView!
  
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+       
         quoteFetcher.quoteDelegate = self
         quoteFetcher.fetchRandomQuote()
         newQuoteButton.setTitle("Fetching quote...", for: .disabled)
@@ -28,9 +26,8 @@ class ViewController: UIViewController, QuoteDelegate {
     }
     
     @IBAction func newQuoteButtonTapped(_ sender: Any) {
-        newQuoteButton.isEnabled = false
+        newQuoteButton.isEnabled = false   // effectively sets title to Fetching quote...
         quoteFetcher.fetchRandomQuote()
-        
     }
     
     func new(quote: Quote) {
