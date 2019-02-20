@@ -33,8 +33,8 @@ class ViewController: UIViewController, QuoteDelegate {
     func new(quote: Quote) {
         DispatchQueue.main.async() {
             
-            let quoteText = "\(quote.text)<p><em>\(quote.author)</em></p>"
-            let data = Data(quoteText.utf8)
+            let quoteText = "<p>\(quote.text)<p><em>\(quote.author)</em></p>"
+            let data = Data(quoteText.utf8)  // decodes &qt; and similar
             
             let attributedString = try? NSAttributedString(
                 data: data,
