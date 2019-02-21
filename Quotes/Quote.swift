@@ -18,8 +18,8 @@ struct Quote: Decodable {
     // The names for keys in the JSON response don't describe the data very well
     // Map the content key in the response to text property
     // Map the title key to the author property
+    // Lowercase is standard for property names, replace ID with id
     enum CodingKeys: String, CodingKey {
-        
         case id = "ID"
         case text = "content"
         case author = "title"

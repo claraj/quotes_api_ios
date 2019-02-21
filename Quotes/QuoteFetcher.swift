@@ -25,7 +25,7 @@ class QuoteFetcher {
     func fetchRandomQuote() {
     
         guard let delegate = quoteDelegate else {
-            print("Warning - no delegate set")
+            print("Warning - no delegate set. Will not make request")
             return
         }
         
@@ -44,19 +44,19 @@ class QuoteFetcher {
         let task = session.dataTask(with: url!, completionHandler: {(data, response, error) in
             
             if let error = error {
-                delegate.error(quoteError: QuoteError(message: error.localizedDescription))
+                delegate.quoteFetchError(because: QuoteError(message: error.localizedDescription))
             }
             
             if let quoteData = data {
                 let decoder = JSONDecoder()
                 if let quote = try? decoder.decode([Quote].self, from: quoteData) {
                     if let randomQuote = quote.first {
-                        delegate.new(quote: randomQuote)
+                        delegate.quoteFetched(quote: randomQuote)
                     } else {
-                        delegate.error(quoteError: QuoteError(message: "No quotes returned"))
+                        delegate.quoteFetchError(because: QuoteError(message: "No quotes returned"))
                     }
                 } else {
-                    delegate.error(quoteError: QuoteError(message: "Unable to decode response from quote server"))
+                    delegate.quoteFetchError(because: QuoteError(message: "Unable to decode response from quote server"))
                 }
             }
         

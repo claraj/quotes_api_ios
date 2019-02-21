@@ -6,12 +6,13 @@
 //  Copyright © 2019 clara. All rights reserved.
 //
 
+
 import Foundation
 
 // Functions that an object that wishes to receive
-// quotes (or errors) must implement
+// quotes (or errors from fetching quotes) must implement
 
 protocol QuoteDelegate {
-    func new(quote: Quote)
-    func error(quoteError: QuoteError)
+    func quoteFetched(quote: Quote)
+    func quoteFetchError(because quoteError: QuoteError)
 }

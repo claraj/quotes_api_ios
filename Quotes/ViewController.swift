@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController, QuoteDelegate {
+
     
     let quoteFetcher = QuoteFetcher()
     
@@ -30,7 +31,7 @@ class ViewController: UIViewController, QuoteDelegate {
         quoteFetcher.fetchRandomQuote()
     }
     
-    func new(quote: Quote) {
+    func quoteFetched(quote: Quote) {
         DispatchQueue.main.async() {
             
             let quoteText = "<p>\(quote.text)<p><em>\(quote.author)</em></p>"
@@ -48,8 +49,7 @@ class ViewController: UIViewController, QuoteDelegate {
         }
     }
     
-    
-    func error(quoteError: QuoteError) {
+    func quoteFetchError(because quoteError: QuoteError) {
         let alert = UIAlertController(title: "Error", message: "Error fetching quote. \(quoteError.message)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(alert, animated: true)
